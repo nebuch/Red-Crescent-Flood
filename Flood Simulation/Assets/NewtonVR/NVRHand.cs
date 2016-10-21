@@ -324,7 +324,7 @@ namespace NewtonVR
         public Vector3 GetVelocityEstimation()
         {
             float delta = LastDeltas.Sum();
-            Vector3 distance = Vector3.zero;
+			Vector3 distance = _tvRemoteLocalPos;
 
             for (int index = 0; index < LastPositions.Length-1; index++)
             {
@@ -339,7 +339,7 @@ namespace NewtonVR
         {
             float delta = LastDeltas.Sum();
             float angleDegrees = 0.0f;
-            Vector3 unitAxis = Vector3.zero;
+			Vector3 unitAxis = _tvRemoteLocalPos;
             Quaternion rotation = Quaternion.identity;
 
             rotation =  LastRotations[LastRotations.Length-1] * Quaternion.Inverse(LastRotations[LastRotations.Length-2]);
