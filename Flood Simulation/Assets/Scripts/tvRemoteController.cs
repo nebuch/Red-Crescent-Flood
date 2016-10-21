@@ -15,6 +15,9 @@ public class tvRemoteController : MonoBehaviour {
 
 	public NewtonVR.NVRHand _thisHand;
 
+	public GameObject _handModel;
+	public GameObject _remoteInHand;
+
 
 	// Use this for initialization
 	void Start () {
@@ -27,13 +30,14 @@ public class tvRemoteController : MonoBehaviour {
 
 		if (_newtonScript.CurrentlyInteracting == _tvRemoteInteractable && !_interactWithRemote) {
 
-			Debug.Log ("lan");
+
 
 			_interactWithRemote = true;
 
 			_remoteBodyMesh.enabled = false;
 			_remoteButtonMesh.enabled = false;
-
+			_handModel.SetActive (false);
+			_remoteInHand.SetActive (true);
 		
 		
 		}
@@ -44,7 +48,8 @@ public class tvRemoteController : MonoBehaviour {
 
 			_remoteBodyMesh.enabled = true;
 			_remoteButtonMesh.enabled = true;
-
+			_handModel.SetActive (true);
+			_remoteInHand.SetActive (false);
 
 		}
 
