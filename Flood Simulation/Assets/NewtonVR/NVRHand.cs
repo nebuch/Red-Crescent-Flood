@@ -10,6 +10,7 @@ namespace NewtonVR
 {
     public class NVRHand : MonoBehaviour
     {
+		public Vector3 _tvRemoteLocalPos;
         private Valve.VR.EVRButtonId HoldButton = EVRButtonId.k_EButton_Grip;
         public bool HoldButtonDown = false;
         public bool HoldButtonUp = false;
@@ -682,7 +683,8 @@ namespace NewtonVR
 
                 CustomModelObject.transform.parent = this.transform;
                 CustomModelObject.transform.localScale = Vector3.one;
-                CustomModelObject.transform.localPosition = Vector3.zero;
+                //CustomModelObject.transform.localPosition = Vector3.zero;
+				CustomModelObject.transform.localPosition = _tvRemoteLocalPos;
                 CustomModelObject.transform.localRotation = Quaternion.identity;
             }
 
