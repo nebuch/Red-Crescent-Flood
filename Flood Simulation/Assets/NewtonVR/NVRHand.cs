@@ -10,10 +10,13 @@ namespace NewtonVR
 {
     public class NVRHand : MonoBehaviour
     {
+		public Vector3 _tvRemoteLocalPos;
         private Valve.VR.EVRButtonId HoldButton = EVRButtonId.k_EButton_Grip;
+		private Valve.VR.EVRButtonId PadButton = EVRButtonId.k_EButton_SteamVR_Touchpad;
         public bool HoldButtonDown = false;
         public bool HoldButtonUp = false;
         public bool HoldButtonPressed = false;
+		public bool PadButtonPressed = false;
         public float HoldButtonAxis = 0f;
 
         private Valve.VR.EVRButtonId UseButton = EVRButtonId.k_EButton_SteamVR_Trigger;
@@ -139,6 +142,8 @@ namespace NewtonVR
             HoldButtonDown = Inputs[HoldButton].PressDown;
             HoldButtonUp = Inputs[HoldButton].PressUp;
             HoldButtonAxis = Inputs[HoldButton].SingleAxis;
+
+			PadButtonPressed = Inputs [PadButton].IsPressed;
 
             UseButtonPressed = Inputs[UseButton].IsPressed;
             UseButtonDown = Inputs[UseButton].PressDown;
@@ -323,7 +328,7 @@ namespace NewtonVR
         public Vector3 GetVelocityEstimation()
         {
             float delta = LastDeltas.Sum();
-            Vector3 distance = Vector3.zero;
+			Vector3 distance = _tvRemoteLocalPos;
 
             for (int index = 0; index < LastPositions.Length-1; index++)
             {
@@ -338,7 +343,7 @@ namespace NewtonVR
         {
             float delta = LastDeltas.Sum();
             float angleDegrees = 0.0f;
-            Vector3 unitAxis = Vector3.zero;
+            Vector3 unitAxis = _tvRemoteLocalPos;
             Quaternion rotation = Quaternion.identity;
 
             rotation =  LastRotations[LastRotations.Length-1] * Quaternion.Inverse(LastRotations[LastRotations.Length-2]);
@@ -682,7 +687,8 @@ namespace NewtonVR
 
                 CustomModelObject.transform.parent = this.transform;
                 CustomModelObject.transform.localScale = Vector3.one;
-                CustomModelObject.transform.localPosition = Vector3.zero;
+                //CustomModelObject.transform.localPosition = Vector3.zero;
+				CustomModelObject.transform.localPosition = _tvRemoteLocalPos;
                 CustomModelObject.transform.localRotation = Quaternion.identity;
             }
 
