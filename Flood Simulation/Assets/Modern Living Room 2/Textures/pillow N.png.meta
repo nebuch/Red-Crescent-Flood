@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ada9c6770d415a9419d0ea743bc7854f
+guid: 4f88535db49430c4482dd7c27e127dd4
 timeCreated: 1464542752
 licenseType: Store
 TextureImporter:
@@ -46,11 +46,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 0
-  spriteTessellationDetail: -1
   textureType: 1
   buildTargetSettings: []
   spriteSheet:
-    serializedVersion: 2
     sprites: []
     outline: []
   spritePackingTag: 
