@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 66c0ff2b74343514e9d0ae8778d2e349
+guid: 8150063ba648c544f90c983a1c00b82e
 timeCreated: 1456894235
 licenseType: Store
 ModelImporter:
@@ -31,7 +31,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-    resampleCurves: 1
+    resampleRotations: 1
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
