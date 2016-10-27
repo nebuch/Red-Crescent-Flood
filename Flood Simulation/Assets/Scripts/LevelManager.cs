@@ -11,20 +11,21 @@ public class LevelManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+        Debug.Log("Number of scenes in build settings: " + SceneManager.sceneCountInBuildSettings);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (SceneManager.sceneCountInBuildSettings < 5)
+            Debug.LogError("Please add all the scenes into build settings");
 
-        //Test if DontDestroyOnLoad() works
-        if (Input.GetKeyDown(KeyCode.Return)) {     //TODO: Remove this line later 
-            LoadNextLevel();
-        }
+        LoadNextLevel();
 	}
 
     //Load next level when certain conditions are met
     void LoadNextLevel() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (Input.GetKeyDown(KeyCode.Return)) {     //TODO: Remove this line later
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 }
