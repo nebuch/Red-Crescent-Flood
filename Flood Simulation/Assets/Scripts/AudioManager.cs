@@ -7,10 +7,6 @@ public class AudioManager : MonoBehaviour {
     public AudioClip[] turkishAudio;
     public AudioClip[] englishAudio;
 
-    void Awake() {
-        DontDestroyOnLoad(gameObject);
-    }
-
 	// Use this for initialization
 	void Start () {
         audioSource = GetComponent<AudioSource>();
