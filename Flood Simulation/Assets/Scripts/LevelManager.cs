@@ -1,29 +1,46 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections;
+using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour {
 
+    public GameObject[] m_Scenes;
+    private int m_CurrentSceneIndex = 0;
+    
+    void Start() {
+        SetInitialScenes();
+    }
+
 	// Update is called once per frame
 	void Update () {
-        if (SceneManager.sceneCountInBuildSettings < 6)
-            Debug.LogError("Please add all the scenes into build settings");
-
-        LoadNextLevel();
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            ActivateNextLevel();
+        }
 	}
 
     //Load next level when certain conditions are met
-    void LoadNextLevel() {
-
-        if (Input.GetKeyDown(KeyCode.Return)) {     //TODO: Remove this line later
-            SceneManager.LoadScene("LivingRoom", LoadSceneMode.Additive);
-            SceneManager.UnloadScene("Start");
-            Invoke("SetActiveScene", 0.1f);
-        }   
+    public void ActivateNextLevel() {
+        GameObject nextLevel = m_Scenes[m_CurrentSceneIndex++];
+        foreach (GameObject scene in m_Scenes) {
+            scene.SetActive(false);
+            if (scene == nextLevel) {
+                scene.SetActive(true);
+            }
+        }
     }
 
-    void SetActiveScene() {
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("LivingRoom"));
-        Debug.Log(SceneManager.GetActiveScene().name);
+    private void SetInitialScenes() {
+        GameObject m_InitialScene = m_Scenes[m_CurrentSceneIndex];
+        foreach (GameObject scene in m_Scenes) {
+            scene.SetActive(false);
+            if (scene == m_InitialScene) {
+                scene.SetActive(true);
+            }
+        }
+    }
+
+    private int GetCurrentSceneIndex()
+    {
+        return m_CurrentSceneIndex;
     }
 }
