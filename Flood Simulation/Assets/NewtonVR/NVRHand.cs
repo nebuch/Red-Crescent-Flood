@@ -11,7 +11,8 @@ namespace NewtonVR
     public class NVRHand : MonoBehaviour
     {
 		public Vector3 _tvRemoteLocalPos;
-        private Valve.VR.EVRButtonId HoldButton = EVRButtonId.k_EButton_Grip;
+        //private Valve.VR.EVRButtonId HoldButton = EVRButtonId.k_EButton_Grip;
+		private Valve.VR.EVRButtonId HoldButton = EVRButtonId.k_EButton_SteamVR_Trigger;
 		private Valve.VR.EVRButtonId PadButton = EVRButtonId.k_EButton_SteamVR_Touchpad;
         public bool HoldButtonDown = false;
         public bool HoldButtonUp = false;
