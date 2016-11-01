@@ -17,6 +17,10 @@ public class tvRemoteController : MonoBehaviour {
 
 	public GameObject _handModel;
 	public GameObject _remoteInHand;
+	[Header("hand")]
+	public tvScreen _tvScreen;
+
+
 
 
 	// Use this for initialization
@@ -26,20 +30,22 @@ public class tvRemoteController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-
 		if (_newtonScript.CurrentlyInteracting == _tvRemoteInteractable && !_interactWithRemote) {
-
-
-
 			_interactWithRemote = true;
-
 			_remoteBodyMesh.enabled = false;
 			_remoteButtonMesh.enabled = false;
 			_handModel.SetActive (false);
 			_remoteInHand.SetActive (true);
 		
-		
+		}
+
+		if (_interactWithRemote) {
+			Debug.Log ("Entered into interact with remote");
+			if (_newtonScript.PadButtonPressed) {
+				Debug.Log ("PadButtonPressed");
+				_tvScreen.TvOn ();
+
+			}
 		}
 
 		if (_tvRemoteObject.GetComponent<NewtonVR.NVRInteractableItem>().AttachedHand != _thisHand) {
