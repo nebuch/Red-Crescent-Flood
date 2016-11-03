@@ -6,7 +6,7 @@ public class waterDropController : MonoBehaviour {
 	public Material _waterDropMat;
 	public float _smoothness;
 	public float _speed;
-
+	public Transform _player;
 
 
 
@@ -27,5 +27,7 @@ public class waterDropController : MonoBehaviour {
 		_smoothness = Mathf.PingPong (_speed * Time.time, 1f);
 
 	
+		this.transform.position = new Vector3 (_player.transform.position.x, this.transform.position.y, _player.transform.position.z);
+
 	}
 }
