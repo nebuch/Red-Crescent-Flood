@@ -17,7 +17,7 @@ public class tvScreen : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		_tVScreenMat.color = Color.black;
 		_tVScreenMat.mainTexture = null;
 	}
 	
@@ -55,6 +55,7 @@ public class tvScreen : MonoBehaviour {
 		Debug.Log ("TvOn called");
 		if (_targeted || _controlButton) {
 			Debug.Log ("Targeted");
+			_tVScreenMat.color = Color.white;
 			_tVScreenMat.mainTexture = _dummy;
 			_dummy.loop = true;
 			_dummy.Play ();
