@@ -22,7 +22,7 @@ public class bookController : MonoBehaviour {
 	void BookOpen(){
 	
 		_bookOpen = true;
-	
+	//gamevent.triggerx
 	}
 
 	void OnTriggerEnter(Collider other){
